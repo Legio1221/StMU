@@ -45,6 +45,7 @@ public class BookTest {
 		b.getPerson().setName("Oscar");
 		b.setCheckedOut(true);
 		assertEquals("Eragon by Chris; unavailable", b.toString());
+		assertEquals("Eragon by Chris; unavailable", b.toString());
 	}
 
 }
