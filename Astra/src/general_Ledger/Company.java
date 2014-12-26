@@ -17,7 +17,7 @@ Accountant PRAccountant;
 	}
 	
 	public Company(){
-		this.id = "123456";
+		this.id = 123456;
 		this.nationality = "American";
 		this.address = "N/A";
 		this.classification = "Small Corp";
