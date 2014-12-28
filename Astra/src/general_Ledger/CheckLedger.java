@@ -119,10 +119,10 @@ public class CheckLedger {
 			this.docNum = docNum;
 		}
 		public int getAmount() {
-			return Amount;
+			return amount;
 		}
 		public void setAmount(int amount) {
-			Amount = amount;
+			amount = amount;
 		}
 		public String getPayableTo() {
 			return payableTo;
