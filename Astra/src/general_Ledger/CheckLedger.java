@@ -92,8 +92,8 @@ public class CheckLedger {
 		//User will supply Company and accountant
 		checkList.add(ck);
 		coaNum = 500110;
-		Company co = new Company();
-		Accountant acc = new Accountant();
+		company = new Company();
+		accountant = new Accountant();
 	}
 	
 	private class Check{

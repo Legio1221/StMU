@@ -113,7 +113,7 @@ public class JButtonChallenge extends JFrame{
 	}
 	
 	public class RedScoreButton implements ActionListener{
-			int num=0;
+			int num=5;
 		public void actionPerformed(ActionEvent e){
 			
 			
