@@ -11,7 +11,7 @@ public class CheckFileLogic {
 	public CheckFileLogic(){
 		try{
 			//Whatever the file path is.
-            File statText = new File("E:/Insedit/statsTest.txt");
+            File statText = new File("C:/Program Files/WorkSpaceZ/statsTest.txt");
             FileOutputStream is = new FileOutputStream(statText);
             OutputStreamWriter osw = new OutputStreamWriter(is);    
             Writer w = new BufferedWriter(osw);
