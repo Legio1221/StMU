@@ -5,15 +5,21 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 import java.awt.Font;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Date;
 
 public class MyGenLedApp {
 
 	private JFrame frame;
-	private JTextField dateTextField;
-	private JTextField txtMmddyy;
 	private JTextField coaTextField;
 	private JTextField amountTextField;
 	private JTextField docCodeTextField;
@@ -22,7 +28,11 @@ public class MyGenLedApp {
 	private JButton nextButton;
 	private JButton btnFinish;
 	private JLabel lblAdvantageInterpreter;
-
+	private JTextField txtChecksDate;
+	private CheckRegister ckReg;
+	private JLabel DescriptionLabel;
+	private JTextField txtDescription;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -67,12 +77,6 @@ public class MyGenLedApp {
 		coaLabel.setBounds(46, 174, 69, 20);
 		frame.getContentPane().add(coaLabel);
 		
-		txtMmddyy = new JTextField();
-		txtMmddyy.setText("MMDDYY");
-		txtMmddyy.setBounds(178, 125, 358, 33);
-		frame.getContentPane().add(txtMmddyy);
-		txtMmddyy.setColumns(10);
-		
 		coaTextField = new JTextField();
 		coaTextField.setToolTipText("Due to the nature of this program, the user must be well aquainted with ADV's CoAs.");
 		coaTextField.setText("Chart of Account Number");
@@ -84,7 +88,7 @@ public class MyGenLedApp {
 		amountTextField.setToolTipText("Amount on check or sub-amount.");
 		amountTextField.setText("Amount");
 		amountTextField.setColumns(10);
-		amountTextField.setBounds(178, 218, 358, 33);
+		amountTextField.setBounds(178, 219, 358, 33);
 		frame.getContentPane().add(amountTextField);
 		
 		JLabel amountLabel = new JLabel("Amount");
@@ -120,7 +124,28 @@ public class MyGenLedApp {
 		bankTextField.setColumns(10);
 		
 		nextButton = new JButton("Next");
-		nextButton.setBounds(333, 401, 200, 50);
+		nextButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				/*
+				 * 
+				 * txtChecksDate
+				 * coaTextField
+				 * docCodeTextField
+				 * bankTextField
+				 * amountTextField
+				 */
+				int amount = Integer.parseInt(amountTextField.getText());
+				int docCode = Integer.parseInt(coaTextField.getText());
+				int coa = Integer.parseInt(coaTextField.getText());
+				int bankCoa = Integer.parseInt(bankTextField.getText());
+				Date date = Date.valueOf(txtChecksDate.getText());
+				//Set up method with String instead of char[].
+				//ckReg.addCheck(date, coa, amount, bankCoa, txtDescription.getText());
+				
+			}
+		});
+		nextButton.setBounds(347, 482, 200, 50);
 		frame.getContentPane().add(nextButton);
 		
 		btnFinish = new JButton("Finish");
@@ -132,5 +157,24 @@ public class MyGenLedApp {
 		lblAdvantageInterpreter.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAdvantageInterpreter.setBounds(161, 28, 680, 67);
 		frame.getContentPane().add(lblAdvantageInterpreter);
+		
+		txtChecksDate = new JTextField();
+		txtChecksDate.setText("Check's Date");
+		txtChecksDate.setBounds(178, 118, 355, 33);
+		frame.getContentPane().add(txtChecksDate);
+		txtChecksDate.setColumns(10);
+		
+		DescriptionLabel = new JLabel("Description");
+		DescriptionLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		DescriptionLabel.setFont(new Font("Calibri", Font.PLAIN, 25));
+		DescriptionLabel.setBounds(46, 387, 120, 20);
+		frame.getContentPane().add(DescriptionLabel);
+		
+		txtDescription = new JTextField();
+		txtDescription.setToolTipText("25 Character Limit!");
+		txtDescription.setText("Description");
+		txtDescription.setColumns(10);
+		txtDescription.setBounds(178, 374, 358, 33);
+		frame.getContentPane().add(txtDescription);
 	}
 }
