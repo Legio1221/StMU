@@ -29,7 +29,6 @@ public class MyGenLedApp {
 	private JButton btnFinish;
 	private JLabel lblAdvantageInterpreter;
 	private JTextField txtChecksDate;
-	private CheckRegister ckReg;
 	private JLabel DescriptionLabel;
 	private JTextField txtDescription;
 	
@@ -142,10 +141,11 @@ public class MyGenLedApp {
 				Date date = Date.valueOf(txtChecksDate.getText());
 				//Set up method with String instead of char[].
 				//ckReg.addCheck(date, coa, amount, bankCoa, txtDescription.getText());
+				CheckFileLogic cfl = new CheckFileLogic();
 				
 			}
 		});
-		nextButton.setBounds(347, 482, 200, 50);
+		nextButton.setBounds(349, 481, 200, 50);
 		frame.getContentPane().add(nextButton);
 		
 		btnFinish = new JButton("Finish");
