@@ -69,6 +69,13 @@ public class EditorLogic {
 		return str;
 	}
 	
+	public String glCheck(int date, int coa, int amount, int ckNum, String desc, int bankCoa){
+		String str = 
+				"hello world";
+		
+		return str;
+	}
+	
 	public String inputPRCheck(int date, int empNum, int checkNum, int amount) throws CheckFieldException {
 		
 		String str = 
