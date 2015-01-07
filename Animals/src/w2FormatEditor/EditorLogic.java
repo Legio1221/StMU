@@ -62,12 +62,23 @@ public class EditorLogic {
 		return str;
 	}
 	
-	public String inputPRCheck(int date, int empNum, int checkNum){
+	public String go2GL(){
 		String str = 
-				"G" +  "14" + novaLine
-				+ novaLine + date
+				"G" + novaLine
+				+ "GL" + novaLine;
+		return str;
+	}
+	
+	public String inputPRCheck(int date, int empNum, int checkNum, int amount) throws CheckFieldException {
+		
+		String str = 
+				"G" +  "14" + novaLine + novaLine
+				+ date
 				+ empNum + novaLine + novaLine + Y + novaLine
-				+ checkNum + novaLine + novaLine;
+				+ checkNum + novaLine + novaLine + "1" + novaLine
+				+ date + novaLine + "1" + novaLine
+				+ amount + novaLine + novaLine;
+		
 		return str;
 	}
 }
