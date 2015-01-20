@@ -25,8 +25,8 @@ public class HowdyIO {
 		try{
 			//Argument MUST include path to the text file.
 			File statText = new File(path);
-			FileOutputStream is = new FileOutputStream(statText);
-			OutputStreamWriter osw = new OutputStreamWriter(is);    
+			FileOutputStream os = new FileOutputStream(statText);
+			OutputStreamWriter osw = new OutputStreamWriter(os);    
 			Writer w = new BufferedWriter(osw);
 			for(int j = 0; j < count; j++){
 				w.write(howdy);
