@@ -1,0 +1,26 @@
+
+********************************
+* Problem #1 - checkNum from checks made payable to companies *
+********************************
+
+checkNum  
+----------
+4987      
+5294      
+9987      
+
+********************************
+* Problem #2 - retrieve the total amount of money any person pays themselves through check *
+********************************
+name        sum(checks.amt)
+----------  ---------------
+Noor        3000.0         
+John        400.0          
+
+********************************
+* Problem #3 - Retreive total amount of Checks made payable to Spurs Fans United Company before May 1, 2013 *
+********************************
+
+sum(amt)  
+----------
+10999.67  

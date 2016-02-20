@@ -1,0 +1,121 @@
+
+******************
+Problem I
+******************
+
+sno         sname       status      city      
+----------  ----------  ----------  ----------
+S01         Smith       20          London    
+S02         Jones       10          Paris     
+S03         Blake       30          Paris     
+S04         Clark       20          London    
+S05         Adams       30          Athens    
+S06         Garcia      50          Austin    
+S07         Thomas      10          El Paso   
+S08         Jonas       40          New York  
+S09         Zeeman      10          LONDON    
+
+******************
+Problem II
+******************
+
+sno         sname     
+----------  ----------
+S01         Smith     
+S04         Clark     
+S09         Zeeman    
+
+******************
+Problem III
+******************
+
+pno         city      
+----------  ----------
+P07         El Paso   
+**P07 is manufactured in El Paso.**
+
+******************
+Problem IV
+******************
+
+pno         pname     
+----------  ----------
+P01         Nut       
+P04         Screw     
+P06         Cog       
+P12         Wheel     
+
+******************
+Problem V
+******************
+
+pno         color     
+----------  ----------
+P01         Red       
+P02         Green     
+P03         Blue      
+P04         Red       
+P05         Blue      
+P06         Red       
+P12         Black     
+
+******************
+Problem VI
+******************
+
+city      
+----------
+London    
+Paris     
+Rome      
+El Paso   
+Austin    
+Houston   
+Dallas    
+**They are not automatically deleted, distinct needs to be included in the statement.**
+
+******************
+Problem VII
+******************
+
+pno         pname     
+----------  ----------
+P01         Nut       
+P03         Screw     
+P04         Screw     
+P05         Cam       
+P06         Cog       
+P10         Gear      
+P11         Tack      
+
+******************
+Problem VIII
+******************
+
+sno         sname     
+----------  ----------
+S01         Smith     
+S02         Jones     
+S03         Blake     
+S04         Clark     
+S06         Garcia    
+S09         Zeeman    
+
+******************
+Problem IX
+******************
+
+sname     
+----------
+Blake     
+
+******************
+Problem X
+******************
+
+pno       
+----------
+P01       
+P03       
+P04       
+P08       

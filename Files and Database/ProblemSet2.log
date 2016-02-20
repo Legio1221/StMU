@@ -1,0 +1,62 @@
+
+*****************************
+Problem I
+*****************************
+
+city      
+----------
+Athens    
+Austin    
+Dallas    
+El Paso   
+Houston   
+London    
+New York  
+Paris     
+Rome      
+
+*****************************
+Problem II
+*****************************
+
+city      
+----------
+Austin    
+El Paso   
+LONDON    
+Paris     
+
+*****************************
+Problem III
+*****************************
+
+city      
+----------
+Athens    
+New York  
+
+*****************************
+Problem IV
+*****************************
+
+sno         sname       pname       city      
+----------  ----------  ----------  ----------
+S01         Smith       Nut         London    
+S01         Smith       Screw       London    
+S01         Smith       Cog         London    
+S02         Jones       Bolt        Paris     
+S03         Blake       Bolt        Paris     
+S04         Clark       Screw       London    
+S09         Zeeman      Nut         LONDON    
+S09         Zeeman      Screw       LONDON    
+
+*****************************
+Problem V
+*****************************
+
+pno         pname       color     
+----------  ----------  ----------
+P01         Nut         Red       
+P03         Screw       Blue      
+P04         Screw       Red       
+P08         Nut         Gold      

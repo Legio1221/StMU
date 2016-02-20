@@ -1,0 +1,70 @@
+
+*****************************
+Problem I
+*****************************
+
+pno         pname       sname     
+----------  ----------  ----------
+P01         Nut         Adams     
+P01         Nut         Jones     
+P01         Nut         Smith     
+P01         Nut         Zeeman    
+P02         Bolt        Blake     
+P02         Bolt        Clark     
+P02         Bolt        Garcia    
+P02         Bolt        Jones     
+P02         Bolt        Smith     
+P03         Screw       Smith     
+P03         Screw       Zeeman    
+P04         Screw       Clark     
+P04         Screw       Smith     
+P04         Screw       Zeeman    
+P05         Cam         Clark     
+P05         Cam         Smith     
+P11         Tack        Adams     
+P11         Tack        Jonas     
+P12         Wheel       Garcia    
+P12         Wheel       Smith     
+P12         Wheel       Zeeman    
+
+*****************************
+Problem II
+*****************************
+
+pname     
+----------
+Wheel     
+Washer    
+Nut       
+Nail      
+Bolt      
+
+*****************************
+Problem III
+*****************************
+
+pno         pname       costPerWeight     
+----------  ----------  ------------------
+P02         Bolt        0.0144508670520231
+P05         Cam         0.407751937984496 
+P06         Cog         0.190355329949239 
+P07         Washer      0.0108910891089109
+P10         Gear        0.279831932773109 
+P12         Wheel       0.0235173824130879
+
+*****************************
+Problem IV
+*****************************
+
+sno         sname     
+----------  ----------
+S02         Jones     
+S03         Blake     
+
+*****************************
+Problem V
+*****************************
+
+sno         sname     
+----------  ----------
+S07         Thomas    

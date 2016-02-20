@@ -1,0 +1,78 @@
+
+*****************************
+Problem I
+*****************************
+
+city        sname     
+----------  ----------
+Paris       Blake     
+Paris       Jones     
+New York    Jonas     
+London      Clark     
+London      Smith     
+LONDON      Zeeman    
+El Paso     Thomas    
+Austin      Garcia    
+Athens      Adams     
+
+*****************************
+Problem II
+*****************************
+
+pno         pname       count(sp.pno)  TotalQuantity
+----------  ----------  -------------  -------------
+P12         Wheel       2              1025         
+P02         Bolt        4              950          
+P01         Nut         4              750          
+P03         Screw       2              600          
+P04         Screw       3              600          
+P11         Tack        2              570          
+P07         Washer      1              300          
+P08         Nut         1              180          
+P09         Nail        1              150          
+P05         Cam         1              100          
+P06         Cog         1              100          
+
+*****************************
+Problem III
+*****************************
+
+pno         color       TotalWeightInGrams
+----------  ----------  ------------------
+P01         Red         9075.0            
+P02         Green       19895.0           
+P03         Blue        10440.0           
+P04         Red         8400              
+P05         Blue        6450.0            
+P06         Red         1970.0            
+P07         Silver      3030.0            
+P08         Gold        2754.0            
+P09         Silver      2475.0            
+P10         Blue        3570.0            
+P11         White       3192.0            
+P12         Black       105135.0          
+
+*****************************
+Problem IV
+*****************************
+
+AverageWeight   
+----------------
+22.8666666666667
+pno         pname       weight      GramsMoreThanAvg
+----------  ----------  ----------  ----------------
+P10         Gear        35.7        12.8333333333333
+P12         Wheel       97.8        74.9333333333333
+
+*****************************
+Problem V
+*****************************
+
+sno         sname       TotalMoneyOwed
+----------  ----------  --------------
+S06         Garcia      1897.5        
+S01         Smith       414.0         
+S02         Jones       139.0         
+S04         Clark       80.0          
+S09         Zeeman      23.0          
+S05         Adams       11.2          
