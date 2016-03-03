@@ -4,6 +4,7 @@ Created on Mar 3, 2016
 @contact: Oscarg_1221@hotmail.com
 @version: 1.0
 @summary: A simple web server that takes in an HTML file and makes a connection with the server.
+@attention: DOES NOT WORK WITH PYTHON 3.X
 @author: Oscar Castro
 '''
 
@@ -30,12 +31,10 @@ while True:
         filename = message.split()[1]
         f = open(filename[1:])
         outputdata = f.read()
-        print(outputdata)
         
         #Send one HTTP header line into socket
-        connectionSocket.send('\nHTTP/1.1 200OK\n\n')
-        connectionSocket.send(outputdata)
-        connectionSocket.close()
+        connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n")
+        #connectionSocket.send(outputdata)
         
         #Send the contents of the requested file to the Client
         for i in range(0, len(outputdata)):
@@ -45,7 +44,8 @@ while True:
     except IOError:
         #Send response message for file not Founder
         print("Eror 404: File not found.")
-        
+        connectionSocket.send("HTTP/1.1 404 Not Found\r\n\r\n")
+        connectionSocket.send("<html><head></head><body><h1>404 Not Found</h1></body></html>\r\n")
         #Close client socket
         connectionSocket.close()
 serverSocket.close()
