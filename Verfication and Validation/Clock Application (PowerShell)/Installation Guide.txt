@@ -1,0 +1,8 @@
+Installation Guide
+-------------------
+The archive file contains a folder with a .wav file. So long as the alarm is left in the same directory
+as the executable the program will run as intended.
+
+Double click the executable to begin using the application.
+
+NOTE, the computer running the application must have at a minimum Powershell Version 3.
