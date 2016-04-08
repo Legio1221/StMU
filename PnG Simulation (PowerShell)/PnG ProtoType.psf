@@ -862,7 +862,7 @@ AAAAAADK8ZnP/D8Cd+JqM2lp3gAAAABJRU5ErkJggg==</Preview>
     <Property name="BackColor">ActiveBorder</Property>
     <Property name="BackgroundImage">
       <Binary>iVBORw0KGgoAAAANSUhEUgAABvAAAASJCAIAAACB4MycAAAABGdBTUEAALGPC/xhBQAAAAlwSFlz
-AAAOwAAADsABataJCQAAH/JJREFUeF7t2EENwDAAA7FSHKyh3v5BcJUc+XMUcj4zMzMzMzMzMzOz
+AAAOvQAADr0BR/uQrQAAH/JJREFUeF7t2EENwDAAA7FSHKyh3v5BcJUc+XMUcj4zMzMzMzMzMzOz
 S+bQNDMzMzMzMzMzs2vm0DQzMzMzMzMzM7Nrds7zAgAAAADcYRsAAAAAIGsbAAAAACBrGwAAAAAg
 axsAAAAAIGsbAAAAACBrGwAAAAAgaxsAAAAAIGsbAAAAACBrGwAAAAAgaxsAAAAAIGsbAAAAACBr
 GwAAAAAgaxsAAAAAIGsbAAAAACBrGwAAAAAgaxsAAAAAIGsbAAAAACBrGwAAAAAgaxsAAAAAIGsb
@@ -3281,7 +3281,7 @@ AAAAAAAAAAD//AAAAAAAAAAAH/4AAAAAAAAAAAAAAAD//4AAAAAAAAAAP/8AAAAAAAAAAAAAAAD/
         <Property name="Name">textboxYTD</Property>
         <Property name="ReadOnly">True</Property>
         <Property name="Size">123, 20</Property>
-        <Property name="TabIndex">7</Property>
+        <Property name="TabIndex">1</Property>
       </Object>
       <Object type="System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="labelWeeklyTotal" children="Controls">
         <Property name="Font">Microsoft Sans Serif, 12pt</Property>
@@ -3312,7 +3312,7 @@ AAAAAAAAAAD//AAAAAAAAAAAH/4AAAAAAAAAAAAAAAD//4AAAAAAAAAAP/8AAAAAAAAAAAAAAAD/
         <Property name="Location">163, 18</Property>
         <Property name="Name">comboboxStdDev</Property>
         <Property name="Size">97, 21</Property>
-        <Property name="TabIndex">9</Property>
+        <Property name="TabIndex">2</Property>
         <Event name="SelectedIndexChanged">comboboxStdDev_SelectedIndexChanged</Event>
       </Object>
       <Object type="System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="comboboxLeadTime" children="Controls">
@@ -3326,14 +3326,14 @@ AAAAAAAAAAD//AAAAAAAAAAAH/4AAAAAAAAAAAAAAAD//4AAAAAAAAAAP/8AAAAAAAAAAAAAAAD/
         <Property name="Location">163, 53</Property>
         <Property name="Name">comboboxLeadTime</Property>
         <Property name="Size">97, 21</Property>
-        <Property name="TabIndex">1</Property>
+        <Property name="TabIndex">3</Property>
         <Event name="SelectedIndexChanged">comboboxLeadTime_SelectedIndexChanged</Event>
       </Object>
       <Object type="System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="textboxProd" children="Controls">
         <Property name="Location">163, 86</Property>
         <Property name="Name">textboxProd</Property>
         <Property name="Size">97, 20</Property>
-        <Property name="TabIndex">2</Property>
+        <Property name="TabIndex">4</Property>
         <Property name="Text">0</Property>
         <Event name="TextChanged">textboxProd_TextChanged</Event>
       </Object>
@@ -3379,7 +3379,7 @@ AAAAAAAAAAD//AAAAAAAAAAAH/4AAAAAAAAAAAAAAAD//4AAAAAAAAAAP/8AAAAAAAAAAAAAAAD/
       <Property name="BackgroundImageLayout">None</Property>
       <Property name="Image">
         <Binary>iVBORw0KGgoAAAANSUhEUgAABhoAAAOUCAYAAABUrem4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlz
-AAAOwgAADsIBFShKgAAA/7JJREFUeF7svQeYHMXV/f2ZPy9ggkm2MRmMjcFgg7HBYBuDjcHYOKKc
+AAAOvwAADr8BOAVTJAAA/7JJREFUeF7svQeYHMXV/f2ZPy9ggkm2MRmMjcFgg7HBYBuDjcHYOKKc
 taucc855lHPOOeecs5CEJJQlhCIKKOeIgPrm9PaaUevuTs101aQ953l+z+u30fatru7pUKfq3v/v
 //tvW0UIIYQQQgghhBBCCCGEEBIV4kZCCCGEEEIIIYQQQgghhBAdxI2EEEIIIYQQQgghhBBCCCE6
 iBsJIYQQQgghhBBCCCGEEEJ0EDcSQgghhBBCCCGEEEIIIYToIG4khBBCCCGEEEIIIYQQQgjRQdxI
@@ -5973,9 +5973,6 @@ ro9/AX1HYFgTgUZ0AAAAAElFTkSuQmCC</Binary>
       <Item type="System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
         <Reference name="newToolStripMenuItem" />
       </Item>
-      <Item type="System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <Reference name="resetToolStripMenuItem" />
-      </Item>
     </Property>
     <Property name="Name">fileToolStripMenuItem</Property>
     <Property name="Size">37, 20</Property>
@@ -6003,24 +6000,23 @@ ro9/AX1HYFgTgUZ0AAAAAElFTkSuQmCC</Binary>
   </Object>
   <Object type="System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="settingsToolStripMenuItem">
     <Property name="Name">settingsToolStripMenuItem</Property>
-    <Property name="Size">152, 22</Property>
+    <Property name="Size">116, 22</Property>
     <Property name="Text">Settings</Property>
+    <Event name="Click">settingsToolStripMenuItem_Click</Event>
   </Object>
   <Object type="System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="newToolStripMenuItem">
     <Property name="Name">newToolStripMenuItem</Property>
-    <Property name="Size">152, 22</Property>
+    <Property name="ShortcutKeys">Ctrl+N</Property>
+    <Property name="Size">141, 22</Property>
     <Property name="Text">New</Property>
+    <Property name="ToolTipText">New Simulation ( Ctrl + N )</Property>
+    <Event name="Click">newToolStripMenuItem_Click</Event>
   </Object>
   <Object type="System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="softwareVersionToolStripMenuItem">
     <Property name="Name">softwareVersionToolStripMenuItem</Property>
     <Property name="Size">161, 22</Property>
     <Property name="Text">Software Version</Property>
     <Event name="Click">softwareVersionToolStripMenuItem_Click</Event>
-  </Object>
-  <Object type="System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="resetToolStripMenuItem">
-    <Property name="Name">resetToolStripMenuItem</Property>
-    <Property name="Size">152, 22</Property>
-    <Property name="Text">Reset</Property>
   </Object>
   <Code><![CDATA[# *****************************
 #region Application Information
@@ -7090,6 +7086,73 @@ $softwareVersionToolStripMenuItem_Click = {
 	[System.Windows.Forms.MessageBox]::Show("Mjolnir`nCurrent Version: 1.2", "Mjolnir")
 	
 }
+
+$newToolStripMenuItem_Click = {
+	#TODO: Place custom script here
+	# ==================================
+	#region Event Variables
+	# ==================================
+	# User Variables
+	# ==================================
+	[int]$global:LeadTime = 0
+	[double]$global:StandardDeviation = 30.0
+	[int]$global:ChangeProdLevel = 0
+	
+	# Simulation Variables
+	# ========================================
+	[double]$global:RandomNumber = Get-RandNum
+	[int]$global:Week = 1 # Start at time = 1.
+	[int]$global:InitialInventory = 450
+	[int]$global:CurrentProduction = 70
+	[int]$global:Demand = Get-InverseNorm -mu 100.0 -sigma $global:StandardDeviation -some_prob $global:RandomNumber
+	[int]$global:ChangeThisWeek = 0
+	[int]$global:Shortage = 0
+	[int]$global:CompanyStorage = 240
+	[int]$global:PublicStorage = 0
+	[double]$global:TotalThisWeek = 0.00
+	[double]$global:TotalAmount = 0.00
+	[int]$global:EndingInventory = ($global:InitialInventory + $global:CurrentProduction - $global:Demand)
+	
+	[double]$global:TotalThisWeekBuffer = 0.00
+	[double]$global:TotalAmountBuffer = 0.00
+	[double]$global:StdDevBuffer = 0.00
+	[string]$global:SoftwareVersion = 1.2
+	#endregion
+	
+	# ==================================
+	#region Event Logic
+	# ==================================
+	
+	# Delete all entries / clear the fields
+	# -------------------------------------
+	$lvSim.Items.Clear()
+	
+	# Reset user choices
+	# ------------------
+	$comboboxLeadTime.SelectedItem = $null
+	$comboboxStdDev.SelectedItem = $null
+	
+	Calculate-Storage
+	
+	$lvIndex = $global:Week - 1
+	
+	$lvSim.Items.Add($global:RandomNumber)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:Week)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:InitialInventory)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:CurrentProduction)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:Demand)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:StandardDeviation)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:LeadTime)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:ChangeProdLevel)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:ChangeThisWeek)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:EndingInventory)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:Shortage)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:CompanyStorage)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:PublicStorage)
+	$lvSim.Items.Item($lvIndex).SubItems.Add($global:TotalThisWeek)
+	
+	Calculate-Week
+}
 #endregion
 # ====================
 
@@ -7541,8 +7604,17 @@ $menustrip1_ItemClicked=[System.Windows.Forms.ToolStripItemClickedEventHandler]{
 	#TODO: Place custom script here
 	
 }
-]]></Code>
-  <Mode>0</Mode>
+
+$settingsToolStripMenuItem_Click={
+	#TODO: Place custom script here
+	
+}
+
+$resetToolStripMenuItem_Click = {
+	
+	
+}]]></Code>
+  <Mode>1</Mode>
   <Assemblies>
     <Assembly>System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</Assembly>
     <Assembly>mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
