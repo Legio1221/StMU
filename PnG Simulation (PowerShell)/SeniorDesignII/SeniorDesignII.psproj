@@ -1,0 +1,12 @@
+﻿<Project>
+  <Version>1</Version>
+  <FileID>706edc83-3cac-4821-b93b-6e5d22896dc9</FileID>
+  <ProjectType>0</ProjectType>
+  <Files>
+    <File ReferenceName="" Build="0">Startup.pss</File>
+    <File ReferenceName="Call-MainForm_psf" Build="0">MainForm.psf</File>
+    <File ReferenceName="Call-Global_ps1" Build="0" CommandExtension="True">Globals.ps1</File>
+    <File ReferenceName="Call-MjolnirConfig_psf" Build="0">MjolnirConfig.psf</File>
+    <File ReferenceName="Call-PnG_ProtoType_psf" Build="0">PnG ProtoType.psf</File>
+  </Files>
+</Project>
