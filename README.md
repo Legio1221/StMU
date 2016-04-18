@@ -1,4 +1,8 @@
 StMU
 ====
 
-Homework, tests, projects, and other assignments I have worked on during my studies at Saint Mary's University.
+Homework, tests, projects, assignments, and other side projecets Oscar G. Castro has worked on during his studies at Saint Mary's University.
+
+Table of Contents
+====
+[LIST ITEM] - [DESCRIPTION]
