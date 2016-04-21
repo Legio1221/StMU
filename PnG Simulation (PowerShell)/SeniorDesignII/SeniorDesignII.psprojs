@@ -5,7 +5,7 @@
     <File>Startup.pss</File>
     <File>Globals.ps1</File>
     <File>MainForm.psf</File>
-    <File>PnG ProtoType.psf</File>
     <File>MjolnirConfig.psf</File>
+    <File>PnG ProtoType.psf</File>
   </OpenFiles>
 </ProjectState>
