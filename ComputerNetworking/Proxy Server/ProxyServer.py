@@ -6,9 +6,9 @@ from socket import *
 import sys
 from _socket import SOCK_STREAM, AF_INET
 
-if len(sys.argc) <= 1:
-        print"Usage : python ProxyServer.py server_ip'\n[server_ip : It is the IP address of the proxy server"
-sys.exit(2)
+if len(sys.argv) <= 1:
+    print"Usage : python ProxyServer.py server_ip'\n[server_ip : It is the IP address of the proxy server"
+    #sys.exit(2)
 
 # Create a server socket, bind it to a port and start listening
 tcpSerSock = socket(AF_INET, SOCK_STREAM)
@@ -26,8 +26,11 @@ while 1:
     message = tcpCliSock.recv(1024)#fill / end
     print message
     # extract the filename from the given message
-    print message.split()[1]
-    filename = message.split()[1].partition("/")[2]
+    try:
+        print message.split()[1]
+        filename = message.split()[1].partition("/")[2]
+    except:
+        print "Failed splitting message."
     print filename
     fileExist = "false"
     filetouse = "/" + filename
@@ -50,8 +53,8 @@ while 1:
         if fileExist == "false":
             #Create a socket on the proxy server
             c = socket(AF_INET, SOCK_STREAM)#fill / end
-            hostn = filename.replace("www.","",1)
-            print(hostn)
+        hostn = filename.replace("www.","",1)
+        print hostn
         try:
             # Connect to the socket to port 80
             #fill
@@ -62,6 +65,7 @@ while 1:
             fileobj.write("GET " + "http://" + filename + "HTTP/1.0\n\n")
             # read response into buffer
             #fill
+            buff = fileobj.readlines()
             #end
             #create a new file in the cache for requested file.
             # send response in buffer to client socket
