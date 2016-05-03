@@ -33,13 +33,14 @@
 *		https://blogs.technet.microsoft.com/windowshpc/2015/02/02/how-to-compile-and-run-a-simple-ms-mpi-program/
 */
 #include <stdio.h>
-//#include <stdlib.h>
+#include <stdlib.h>
+#include <math.h>
 
 /* We'll be using MPI routines, definitions, etc. */
 #include <mpi.h>
 
 /* The following macros are borrowed from the auc_partition_rectangle.c file*/
-			// Macros //
+// Macros //
 #define BLOCK_LOW(rank,n,comm_sz) ((rank)*(n)/comm_sz)
 #define BLOCK_HIGH(rank,n,comm_sz)  (BLOCK_LOW((rank+1),n,comm_sz)-1)
 
@@ -63,12 +64,10 @@ int main(int argc, char *argv[]) {
 
 	/* Initial Variables*/
 	// Global variables?
-	int my_rank, comm_sz, n, local_n;
-	double a, b, h, local_a, local_b;
-	double local_int, total_int;
-	double PI25DT = 3.141592653589793238462643; // Use for PI accuracy
+	int my_rank, comm_sz, n;
 
- // ----------------------------------------- MPI Environment -------------------------------------------------------- //
+
+	// ----------------------------------------- MPI Environment -------------------------------------------------------- //
 	MPI_Init(&argc, &argv);
 
 	/* Get my process rank */
@@ -76,27 +75,29 @@ int main(int argc, char *argv[]) {
 
 	/* Determine total number of processors */
 	MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
-// ------------------------------------------ END MPI Environment -------------------------------------------------------- //
+	// ------------------------------------------ END MPI Environment -------------------------------------------------------- //
 
+	double a, b, h, local_a, local_b;
+	double local_int, total_int;
+	double PI25DT = 3.141592653589793238462643; // Use for PI accuracy
+	double local_n;
 
-
-
-// ****************************************** Pi Computation ************************************************************* //
+												// ****************************************** Pi Computation ************************************************************* //
 	Get_input(my_rank, comm_sz, &a, &b, &n);
 
 	h = (b - a) / n;          /* h is the same for all processes */
 
-	// Use the macros instead.
+							  // Use the macros instead.
 	local_a = BLOCK_LOW(my_rank, n, comm_sz);
 	local_b = BLOCK_HIGH(my_rank, n, comm_sz);
 
 
 	local_n = local_b - local_a + 1; // Attuned to macros
 	local_int = Trap(local_a*h, local_b*h, local_n, h);
-// ***************************************** END Pi Computation ********************************************************** //
+	// ***************************************** END Pi Computation ********************************************************** //
 
 
-// ----------------------------------------- Print Results --------------------------------------------------------------- //
+	// ----------------------------------------- Print Results --------------------------------------------------------------- //
 	/* Add up the integrals calculated by each process */
 	MPI_Reduce(&local_int, &total_int, 1, MPI_DOUBLE, MPI_SUM, 0,
 		MPI_COMM_WORLD);
@@ -111,10 +112,15 @@ int main(int argc, char *argv[]) {
 		// Clear the buffer
 		fflush(stdout);
 		// borrowing code from the previous programs
-		printf("The error value is %.16lf\n", fabs(total_int - PI25DT)); // Not working?
+		printf("Calcul = %.25lf\n",total_int);
+		fflush(stdout);
+		printf("PI25DT = %.25lf\n", PI25DT);
+		fflush(stdout);
+		double foo = total_int - PI25DT;
+		printf("The error value is %.25lf\n", fabs(foo));
 		fflush(stdout);
 	}
-// ---------------------------------------- END Print Results ------------------------------------------------------------ //
+	// ---------------------------------------- END Print Results ------------------------------------------------------------ //
 
 
 	/* Shut down MPI */
@@ -122,7 +128,7 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 } /*  main  */
-// =========================================================== MAIN ========================================================================== //
+  // =========================================================== MAIN ========================================================================== //
 
   /*------------------------------------------------------------------
   * Function:     Get_input

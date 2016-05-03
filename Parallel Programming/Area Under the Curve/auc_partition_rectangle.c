@@ -25,7 +25,7 @@
 #define MAX_NAME 80   /* length of characters for naming a process */
 #define MASTER 0      /* rank of the master */
 
-		// Macros //
+// Macros //
 #define LOW(rank,nprocs,n) (rank*n/nprocs)
 #define HIGH(rank,nprocs,n) (LOW((rank+1),nprocs,n)-1)
 
@@ -33,18 +33,9 @@ int main(int argc, char *argv[]) {
 
 	int rank,                                           /* rank variable to identify the process */
 		nprocs,                                         /* number of processes */
-		i,
 		len;                                            /* variable for storing name of processes */
 
-	int n = 10000;                                      /* the number of bins */
-	double PI25DT = 3.141592653589793238462643;         /* 25-digit-PI*/
-	double mypi,                                        /* value from each process */
-		pi,                                          /* value of PI in total*/
-		step,                                        /* the step */
-		sum,                                         /* sum of area under the curve */
-		x,
-		my_left,
-		my_right;
+
 
 	char name[MAX_NAME];        /* char array for storing the name of each process */
 
@@ -52,14 +43,14 @@ int main(int argc, char *argv[]) {
 		end_time,            /* ending time */
 		computation_time;    /* time for computing value of PI */
 
-	// PHASE I: INITIALIZE THE ENVIRONMENT
-	/*=============================================================================
-	*
-	* BEGIN
-	*
-	*/
+							 // PHASE I: INITIALIZE THE ENVIRONMENT
+							 /*=============================================================================
+							 *
+							 * BEGIN
+							 *
+							 */
 
-	// Initialize the environment
+							 // Initialize the environment
 	MPI_Init(&argc, &argv);
 
 	// A processor will retrieve their unique local rank
@@ -90,7 +81,15 @@ int main(int argc, char *argv[]) {
 	// =============================================================================
 
 
-
+	int n = 40000;                                      /* the number of bins */
+	double PI25DT = 3.141592653589793238462643;         /* 25-digit-PI*/
+	double mypi,                                        /* value from each process */
+		pi,                                          /* value of PI in total*/
+		step,                                        /* the step */
+		sum,                                         /* sum of area under the curve */
+		x,
+		my_left,
+		my_right;
 
 	// PHASE II: COMPUTATION
 	/* =============================================================================
@@ -102,7 +101,7 @@ int main(int argc, char *argv[]) {
 	// Calculating for each process
 	step = 1.0 / (double)n;
 	sum = 0.0;
-	for (i = rank; i < n; i += nprocs) {
+	for (int i = (rank * (n / nprocs)); i < ((rank * (n / nprocs)) + (n/nprocs)); i++) {
 		x = step * ((double)i + 0.5);
 		sum += (4.0 / (1.0 + x*x));
 	}
@@ -149,6 +148,7 @@ int main(int argc, char *argv[]) {
 	//MPI_Barrier(MPI_COMM_WORLD);
 
 	printf("This is my sum: %.16f from rank: %d name: %s\n", mypi, rank, name);
+	fflush(stdout);
 
 	// Wait for everyone to print their results.
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -156,9 +156,11 @@ int main(int argc, char *argv[]) {
 	if (rank == 0)
 	{
 		printf("Pi is approximately %.16f, Error is %.16f\n", pi, fabs(pi - PI25DT));
+		fflush(stdout);
 		end_time = MPI_Wtime();
 		computation_time = end_time - start_time;
 		printf("Time of calculating PI is: %f\n", computation_time);
+		fflush(stdout);
 	}
 
 
