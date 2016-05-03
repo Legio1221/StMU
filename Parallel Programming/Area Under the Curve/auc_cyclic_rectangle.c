@@ -1,20 +1,20 @@
-/***********************************************************
-* Program: Pi Calculation
-* Using the Rectangular Rule
-* 
+/************************************************************
+* Program: Pi Calculation                                   *
+* Using the Rectangular Rule							    *
+* Oscar Guillermo Castro								    *
+* EG 4387A												    *
+* 30 March 2016											    *
 *************************************************************/
 
-#include <mpi.h>
+#include "mpi.h"
 #include <math.h>
 #include <stdio.h>
 
 #define MAX_NAME 80   /* length of characters for naming a process */
 #define MASTER 0      /* rank of the master */
-#define BLOCK_LOW(rank,nprocs,n) ((rank)*(n)/nprocs)
-#define BLOCK_HIGH(rank,nprocs,n)  (BLOCK_LOW((rank+1),nprocs,n)-1)
 
-
-
+/* Prototype functions */
+void intialize_MPI(int argc, char *argv[], int rank, int nprocs, char *name, int len);
 
 int main(int argc, char *argv[]) {
 
@@ -29,9 +29,7 @@ int main(int argc, char *argv[]) {
            pi,                                          /* value of PI in total*/
            step,                                        /* the step */
            sum,                                         /* sum of area under the curve */
-           x,
-		   myLeft,
-		   myRight;
+           x;
 
     char name[MAX_NAME];        /* char array for storing the name of each process */
 
@@ -39,47 +37,62 @@ int main(int argc, char *argv[]) {
            end_time,            /* ending time */
            computation_time;    /* time for computing value of PI */
 
+    // Initialize MPI environment
+	intialize_MPI(argc, *argv[], rank, nprocs, name, len);
 	
-	MPI_Init(NULL, NULL);
+    /* Broadcast the number of bins to all processes */
+    /* This broadcasts an integer which is n, from the master to all processes
+     * and
+     */
+
+	/* Broadcast number of bins*/
+    MPI_Bcast(&n,1,MPI_INT,MASTER,MPI_COMM_WORLD);
+	/* END Broadcast number of bins*/
 	
-	/* Get the number of processes */
-	MPI_Comm_size(MPI_COMM_WORLD, &nprocs); 
-
-	/* Get my rank among all the processes */
-	MPI_Comm_rank(MPI_COMM_WORLD, &rank); 
-
-    MPI_Get_processor_name(name, &len);
-	
-	myLeft = BLOCK_LOW(rank,nprocs,n);
-	myRight = BLOCK_HIGH(rank, nprocs,n);
-	
-
-    start_time = MPI_Wtime();
-
-    
     /* Calculating for each process */
     step = 1.0 / (double) n;
     sum = 0.0;
-    for (i = myLeft; i <= myRight; i++) {
-		
+    for (i = rank; i < n; i += nprocs) {
         x = step * ((double)i + 0.5);
         sum += (4.0/(1.0 + x*x));
     }
-	
-	mypi = step * sum;
-	
-	MPI_Reduce(&mypi,&pi , 1, MPI_DOUBLE, MPI_SUM,0,MPI_COMM_WORLD);
+
+    mypi = step * sum;
 
     printf("This is my sum: %.16f from rank: %d name: %s\n", mypi, rank, name);
 
-
-    if (rank == 0) {
+    /* Now we can reduce all those sums to one value which is Pi */
+	/* Reduce */
+    // TO DO
+    // Reduce to master processor
+	MPI_Reduce(&mypi, &pi, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+    // end TO DO
+	/* END Reduce */
+	if (rank == 0)
+	{
         printf("Pi is approximately %.16f, Error is %.16f\n", pi, fabs(pi - PI25DT));
         end_time = MPI_Wtime();
         computation_time = end_time - start_time;
         printf("Time of calculating PI is: %f\n", computation_time);
-    }
+	}
     /* Terminate MPI execution environment */
     MPI_Finalize();
     return 0;
 }
+//					Initialize MPI environment
+/* ------------------------------------------------------------------------------------------------ */
+double intialize_MPI(int argc, char *argv[], int rank, int nprocs, char *name, int len){
+	/*Initialize MPI execution environment */
+    MPI_Init(&argc, &argv);
+	
+	
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
+
+    MPI_Get_processor_name(name, &len);
+	
+    start_time = MPI_Wtime();
+	/*END Initialize MPI execution environment */
+}
+/* ------------------------------------------------------------------------------------------------ */
+
