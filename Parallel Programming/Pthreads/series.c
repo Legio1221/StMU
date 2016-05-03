@@ -27,40 +27,42 @@ void *for_sum(void *arguements);
 struct arg_for_sum {
 	int sum;
 	int n_times;
-	int *array;
+	//int *array;
 	int d;
 	int a1;
 	int thread_id;
 	int thread_count;
 };
 
-struct arg_calc_sequences {
+/*struct arg_calc_sequences {
 	int *array;
 	int a1;
 	int d;
 	int n_times;
 	int thread_id;
 	int thread_count;
-};
+};*/
 
 	
 /* Shared Variables */
 int global_sum = 0;
-int *global_array;
-pthread_mutex_t sum_mutex = PTHREAD_MUTEX_INITIALIZER;
+//int *global_array;
+pthread_mutex_t sum_mutex; // = PTHREAD_MUTEX_INITIALIZER;
 int thread_count;
+
+// Initial
+int n = 5;
+int a1 = 3;
+int d = 7;
 
 int main(int argc,char* argv[])
 {
 	/*BEGIN defaults*/
-	int k = 0;
-	int n = 5;
-	int a1 = 3;
-	int d = 7;
-	int *array;
-	int summation_total = 0;
+	//int k = 0;
+	//int *array;
+	//int summation_total = 0;
 	int sequence_total = 0;
-	thread_count = 1;
+	thread_count = 5;
 	long thread;
 	/*defaults*/
 	
@@ -73,24 +75,28 @@ int main(int argc,char* argv[])
 	
 	// allocating memory
 	//global_array = (int *)malloc(sizeof(int *) * n);
-	global_array = (int *)malloc(sizeof(int *) * thread_count);
+	//global_array = (int *)malloc(sizeof(int *) * thread_count);
 	pthread_t* thread_handles = malloc(thread_count * sizeof(pthread_t));
-
+	//int *task_id_array = malloc(thread_count * sizeof(int));
+	
+	pthread_mutex_init(&sum_mutex, NULL);
 	// Creating arg structs
-	struct arg_for_sum *sum_args;
+	//struct arg_for_sum *sum_args;
 	// struct arg_calc_sequences calc_args;
 
-	sum_args = malloc(thread_count * sizeof(sum_args));
-	for (int i = 0; i < thread_count; i++)
+	//sum_args = malloc(thread_count * sizeof(sum_args));
+
+	
+	/*for (int i = 0; i < thread_count; i++)
 	{
-		sum_args[i].array = array;
+		//sum_args[i].array = array;
 		sum_args[i].n_times = n;
 		sum_args[i].sum = summation_total;
 		sum_args[i].a1 = a1;
 		sum_args[i].d = d;
 		sum_args[i].thread_count = thread_count;
 		sum_args[i].thread_id = i;
-	}
+	}*/
 	
 
 	/*
@@ -116,10 +122,13 @@ int main(int argc,char* argv[])
 	// Adding elements of the series to array
 	for (thread = 0; thread < thread_count; thread++)
 	{
-		pthread_create(&thread_handles[thread], NULL, for_sum, (void *) &sum_args[thread]);
+		pthread_create(&thread_handles[thread], NULL, for_sum, (void *) thread);
 	}
 
-
+	for( thread = 0; thread < thread_count; thread++)
+	{
+		pthread_join(thread_handles[thread], NULL);
+	}
 	// OpenMP version
 	/*
 	// Calculating summation of the series
@@ -138,55 +147,53 @@ int main(int argc,char* argv[])
 	sequence_total = ((.5*n) * (2 * a1 + d * (n-1)));
 	
 	
-	
-	
 	printf("The summation of the series is %d\n", global_sum);
 	fflush(stdout);
 	printf("The result given by formula (2) is %d\n", sequence_total);
 	fflush(stdout);
 	
 	
-	free(array);
+	//free(array);
 	free(thread_handles);
 
 	pthread_exit(NULL);
 }
 
 
-void *for_sum(void *arguements) 
+void *for_sum(void *rank) 
 {
-	struct arg_for_sum *args = arguements;
+	//struct arg_for_sum *args = arguements;
 
+	/*
 	int n = args->n_times;
-	int sum = args->sum;
+	//int sum = args->sum;
 	//int array = args->array;
 	int t_id = args->thread_id;
 	int t_count = args->thread_count;
 	int a1 = args->a1;
 	int d = args->d;
+	*/
 	
+	
+	int my_sum = 0;
+	//int *local_array;
+	//int chunk_size = n / thread_count;
+	//int *my_rank;
+	//int temp_rank = (int *) rank;
+	long my_rank = (long) rank;
+	
+	
+	//local_array = malloc(n * sizeof(int));
 
-	int my_sum;
-	int *local_array;
-	int chunk_size = n / t_count;
-
-	local_array = malloc(n * sizeof(int));
-
-	for (int i = 0; i < n; i++)
+	int low = (my_rank * n / thread_count);
+	int high = (my_rank + 1) * (n / thread_count) - 1;
+	for (int k = low; k <= high; k++)
 	{
-		local_array[i] = 0;
+		my_sum += (a1 + (k)* d);
 	}
 
-	for (int k = (chunk_size * t_id); k < (t_id + 1)*chunk_size; k++)
-	{
-		local_array[k] = (a1 + (k)* d);
-	}
-
-	for (int i = 0; i < n; i++)
-	{
-		my_sum += local_array[i];
-	}
-
+	printf("%d from rank %ld\n",my_sum,my_rank);
+	
 	pthread_mutex_lock(&sum_mutex);
 	global_sum += my_sum;
 	pthread_mutex_unlock(&sum_mutex);
